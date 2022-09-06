@@ -59,12 +59,13 @@ export class HomeComponent implements OnInit {
     this._cardDragged = card;
   }
 
-  public drop(finalListId: ListType) {
+  public drop(targetListId: ListType) {
+    this.dropValidationHandler(targetListId);
     if (this._cardDragged) {
-      if (this._cardDragged.lista === finalListId) {
+      if (this._cardDragged.lista === targetListId) {
         return;
       }
-      let newCard = { ...this._cardDragged, lista: finalListId };
+      let newCard = { ...this._cardDragged, lista: targetListId };
       this._service
         .updateCard(newCard)
         .pipe(take(1))
@@ -90,6 +91,27 @@ export class HomeComponent implements OnInit {
 
   public dragEnd() {
     this._cardDragged = null;
+  }
+
+  private dropValidationHandler(targetListId: ListType): void {
+    if (this._cardDragged) {
+      const { lista } = this._cardDragged;
+      let listDataObject = this.kanbanList.find(
+        (k) => k.value === targetListId
+      );
+      let dropIsValid = listDataObject?.droppableOrigin.find(
+        (i) => i === lista
+      );
+      console.log(listDataObject, dropIsValid);
+
+      if (!dropIsValid) {
+        this._messageService.add({
+          severity: 'warn',
+          detail: 'Só é possível movimentar cards para as listas adjacentes a atual',
+        });
+        this.dragEnd();
+      }
+    }
   }
 
   public removeCardHandler(card: ICard): void {
