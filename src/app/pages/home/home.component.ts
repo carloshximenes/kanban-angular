@@ -102,12 +102,12 @@ export class HomeComponent implements OnInit {
       let dropIsValid = listDataObject?.droppableOrigin.find(
         (i) => i === lista
       );
-      console.log(listDataObject, dropIsValid);
 
       if (!dropIsValid) {
         this._messageService.add({
           severity: 'warn',
-          detail: 'Só é possível movimentar cards para as listas adjacentes a atual',
+          detail:
+            'Só é possível movimentar cards para as listas adjacentes a atual',
         });
         this.dragEnd();
       }
