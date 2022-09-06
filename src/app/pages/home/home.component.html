@@ -1,0 +1,72 @@
+<p-toast position="top-center"></p-toast>
+<p-confirmDialog
+  header="Atenção"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>
+<app-header (newCardClickEvent)="openModalNewCard()"></app-header>
+
+<div class="kanban__container">
+  <div
+    *ngFor="let list of kanbanList"
+    class="col-12 md:col-4 drop-column kanban__list"
+  >
+    <h1>{{ list.label }}</h1>
+    <div
+      class="kanban__dropArea"
+      pDroppable="cards"
+      [pDroppableDisabled]="!list.droppable"
+      (onDrop)="drop(list.value)"
+    >
+      <div
+        *ngFor="let card of this.cardList[list.value]"
+        class="card-item"
+        pDraggable="cards"
+        [pDraggableDisabled]="!list.draggable"
+        (onDragStart)="dragStart(card)"
+        (onDragEnd)="dragEnd()"
+      >
+        <div class="kanban__card">
+          <p-card>
+            <ng-template pTemplate="title">
+              <div class="kanban__card__title">
+                <span>{{ card.titulo }}</span>
+              </div>
+              <hr />
+            </ng-template>
+
+            <markdown [data]="card.conteudo"> </markdown>
+
+            <ng-template pTemplate="footer">
+              <hr />
+              <div class="kanban__card__footer">
+                <button
+                  pButton
+                  pRipple
+                  type="button"
+                  icon="pi pi-pencil"
+                  class="p-button-rounded p-button-secondary"
+                  (click)="editCardHandler(card)"
+                ></button>
+                <button
+                  pButton
+                  pRipple
+                  type="button"
+                  icon="pi pi-trash"
+                  class="p-button-rounded p-button-danger"
+                  (click)="removeCardHandler(card)"
+                ></button>
+              </div>
+            </ng-template>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal-card-detail
+  *ngIf="showModalCardDetail"
+  [card]="cardSelected"
+  [showModal]="showModalCardDetail"
+  (modalActionResult)="modalCardCloseHandler($event)"
+></app-modal-card-detail>

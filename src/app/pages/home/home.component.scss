@@ -1,0 +1,45 @@
+.kanban {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    min-height: 50vh;
+  }
+  &__list {
+    background-color: #d3d3d3;
+    box-shadow: 2px 0 0 0 #888, 0 2px 0 0 #888, 2px 2px 0 0 #888,
+      2px 0 0 0 #888 inset, 0 2px 0 0 #888 inset;
+    display: flex;
+    flex-direction: column;
+    h1 {
+      display: block;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 2px 0 0 #888;
+      padding: 10px 0px;
+      margin-bottom: 10px;
+    }
+  }
+  &__dropArea {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__card {
+    padding-bottom: 10px;
+    width: 500px;
+    &__title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}

@@ -1,0 +1,74 @@
+<p-dialog
+  [header]="card ? 'Editar Card' : 'Novo Card'"
+  [(visible)]="showModal"
+  [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '25vw' }"
+  [draggable]="false"
+  [resizable]="false"
+  [modal]="true"
+  [closeOnEscape]="false"
+  [closable]="false"
+  class="modal-new-card"
+>
+  <form class="modal-new-card__form" [formGroup]="form" (submit)="submitForm()">
+    <div class="field">
+      <label for="title" class="block">Título</label>
+      <input
+        id="title"
+        type="title"
+        aria-describedby="title-help"
+        [ngClass]="
+          checkIfFieldIsTouchedAndInvalid('title') ? 'ng-invalid ng-dirty' : ''
+        "
+        formControlName="title"
+        pInputText
+      />
+      <small
+        *ngIf="checkIfFieldIsTouchedAndInvalid('title')"
+        id="title-help"
+        class="p-error block"
+        >Campo obrigatório</small
+      >
+    </div>
+    <div class="field">
+      <label for="description" class="block">Descrição</label>
+      <textarea
+        id="description"
+        type="text"
+        aria-describedby="description-help"
+        [ngClass]="
+          checkIfFieldIsTouchedAndInvalid('description')
+            ? 'ng-invalid ng-dirty'
+            : ''
+        "
+        formControlName="description"
+        [rows]="5"
+        pInputTextarea
+      ></textarea>
+      <small
+        *ngIf="checkIfFieldIsTouchedAndInvalid('description')"
+        id="description-help"
+        class="p-error block"
+        >Campo obrigatório</small
+      >
+    </div>
+    <div class="modal-new-card__form__footer">
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Fechar"
+        class="p-button-danger"
+        icon="pi pi-times"
+        (click)="closeModal()"
+      ></button>
+      <button
+        pButton
+        pRipple
+        type="submit"
+        label="Salvar"
+        icon="pi pi-save"
+      ></button>
+    </div>
+  </form>
+</p-dialog>
