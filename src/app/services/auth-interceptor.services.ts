@@ -6,13 +6,12 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { catchError, Observable, switchMap, throwError } from 'rxjs';
 import { AuthService } from './auth.services';
 
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
-  constructor(private _authService: AuthService, private _router: Router) {}
+  constructor(private _authService: AuthService) {}
 
   intercept(
     request: HttpRequest<any>,

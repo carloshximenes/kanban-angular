@@ -120,7 +120,6 @@ export class HomeComponent implements OnInit {
         'Você está certo de que deseja excluir esse card, essa ação não pode ser desfeita?',
       acceptLabel: 'Sim',
       rejectLabel: 'Não',
-      rejectButtonStyleClass: 'mr-2',
       accept: () => {
         this.removeCard(card);
       },
