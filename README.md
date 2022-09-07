@@ -27,6 +27,9 @@ Ela responderá na porta 5000.
 
 ![image](https://user-images.githubusercontent.com/4548273/188714804-7a892644-3d82-43f7-a0ea-10a70d4fe94e.png)
 
+UX/UI atualizado!
+![image](https://user-images.githubusercontent.com/4548273/188968328-21402b00-991d-49d4-89e5-9adf0efdf867.png)}
+
 ## Requisitos atendidos
 - [x] A API que provemos deve ser usada para persistência dos cards (ela trabalha com persistência em memória) e não deve ser alterada.
 - [x] A interface gráfica será apenas uma tela, nela deve haver três colunas chamadas "To do", "Doing" e "Done".
