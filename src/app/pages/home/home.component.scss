@@ -3,24 +3,60 @@
     display: flex;
     flex-direction: row;
     min-height: 50vh;
+    justify-content: center;
   }
-  &__list {
-    background-color: #d3d3d3;
-    box-shadow: 2px 0 0 0 #888, 0 2px 0 0 #888, 2px 2px 0 0 #888,
-      2px 0 0 0 #888 inset, 0 2px 0 0 #888 inset;
-    display: flex;
-    flex-direction: column;
-    h1 {
-      text-align: center;
-      box-shadow: 0 2px 0 0 #888;
-      padding-bottom: 0.67em;
+
+  &__card {
+    height: 100%;
+  }
+
+  &__card-item {
+    width: 100%;
+  }
+
+  &__title {
+    display: inline-flex;
+    align-items: center;
+    align-self: center;
+    color: #607d8b;
+    i {
+      margin-right: 10px;
+      font-size: 24px;
     }
   }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__dropArea {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+}
+
+:host::ng-deep {
+  .kanban__card__content {
+    height: 100%;
+    .p-card-content {
+      padding: 0px;
+      height: 100%;
+    }
+    .p-card-body {
+      height: 100%;
+    }
+    &.toDo {
+      border-top: 5px solid #ffb300;
+    }
+    &.doing {
+      border-top: 5px solid #29b6f6;
+    }
+    &.done {
+      border-top: 5px solid #8bc34a;
+    }
   }
 }

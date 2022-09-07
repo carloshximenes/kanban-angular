@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { CardModule } from "primeng/card";
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DragDropModule } from 'primeng/dragdrop';
 import { ToastModule } from 'primeng/toast';
@@ -23,6 +24,7 @@ import { HomeService } from './home.service';
     ModalCardDetailModule,
     ConfirmDialogModule,
     KanbanCardModule,
+    CardModule
   ],
   exports: [HomeComponent],
   providers: [HomeService, MessageService, ConfirmationService],

@@ -1,34 +1,26 @@
 <div class="kanban__card">
-  <p-card>
-    <ng-template pTemplate="title">
-      <div class="kanban__card__title">
-        <span>{{ card.titulo }}</span>
-      </div>
-      <hr />
-    </ng-template>
+  <div class="kanban__card__title">
+    <h2 class="m-0">{{ card.titulo }}</h2>
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-pencil"
+      class="p-button-rounded p-button-secondary p-button-text"
+      (click)="editCardHandler(card)"
+    ></button>
+  </div>
 
-    <markdown [data]="card.conteudo"> </markdown>
+  <markdown [data]="card.conteudo"> </markdown>
 
-    <ng-template pTemplate="footer">
-      <hr />
-      <div class="kanban__card__footer">
-        <button
-          pButton
-          pRipple
-          type="button"
-          icon="pi pi-pencil"
-          class="p-button-rounded p-button-secondary"
-          (click)="editCardHandler(card)"
-        ></button>
-        <button
-          pButton
-          pRipple
-          type="button"
-          icon="pi pi-trash"
-          class="p-button-rounded p-button-danger"
-          (click)="deleteCardHandler(card)"
-        ></button>
-      </div>
-    </ng-template>
-  </p-card>
+  <div class="kanban__card__footer">
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-trash"
+      class="p-button-rounded p-button-danger p-button-text"
+      (click)="deleteCardHandler(card)"
+    ></button>
+  </div>
 </div>

@@ -117,7 +117,7 @@ export class HomeComponent implements OnInit {
   public deleteCardHandler(card: ICard): void {
     this._confirmationService.confirm({
       message:
-        'Você está certo de que deseja excluir esse card, essa ação não pode ser desfeita?',
+        'Você está certo de que deseja excluir esse card? Essa ação não pode ser desfeita!',
       acceptLabel: 'Sim',
       rejectLabel: 'Não',
       accept: () => {

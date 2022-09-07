@@ -8,30 +8,40 @@
 <div class="kanban__container">
   <div
     *ngFor="let list of kanbanList"
-    class="col-12 md:col-4 drop-column kanban__list"
+    class="col-12 md:col-3 drop-column kanban__list"
   >
-    <h1>{{ list.label }}</h1>
-    <div
-      class="kanban__dropArea"
-      pDroppable="cards"
-      [pDroppableDisabled]="!list.droppable"
-      (onDrop)="drop(list.value)"
+    <p-card
+      class="kanban__card"
+      [styleClass]="'kanban__card__content ' + list.value"
     >
+      <ng-template pTemplate="title">
+        <div class="kanban__title">
+          <i [ngClass]="list.icon"></i>
+          <h2 class="m-0">{{ list.label }}</h2>
+        </div>
+      </ng-template>
       <div
-        *ngFor="let card of this.cardList[list.value]"
-        class="card-item"
-        pDraggable="cards"
-        [pDraggableDisabled]="!list.draggable"
-        (onDragStart)="dragStart(card)"
-        (onDragEnd)="dragEnd()"
+        class="kanban__dropArea"
+        pDroppable="cards"
+        [pDroppableDisabled]="!list.droppable"
+        (onDrop)="drop(list.value)"
       >
-        <app-kanban-card
-          [card]="card"
-          (editEventHandler)="editCardHandler($event)"
-          (deleteEventHandler)="deleteCardHandler($event)"
-        ></app-kanban-card>
+        <div
+          *ngFor="let card of this.cardList[list.value]"
+          class="kanban__card-item"
+          pDraggable="cards"
+          [pDraggableDisabled]="!list.draggable"
+          (onDragStart)="dragStart(card)"
+          (onDragEnd)="dragEnd()"
+        >
+          <app-kanban-card
+            [card]="card"
+            (editEventHandler)="editCardHandler($event)"
+            (deleteEventHandler)="deleteCardHandler($event)"
+          ></app-kanban-card>
+        </div>
       </div>
-    </div>
+    </p-card>
   </div>
 </div>
 
